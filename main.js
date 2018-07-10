@@ -62,6 +62,11 @@ console.log('is blockchain valid?' + sonaliCoin.isChainValid());
 
 //tampering of block:
 sonaliCoin.chain[1].data = { amount: 100 }; //instead of 4, transfering 100 coins
-
 console.log('is blockchain valid?' + sonaliCoin.isChainValid());
+
+//recalculation to avoid tampering getting caught:
+sonaliCoin.chain[1].hash = sonaliCoin.chain[1].calculateHash();
+//still caught:
+console.log('Is blockchain valid?' + sonaliCoin.isChainValid());
+
 
